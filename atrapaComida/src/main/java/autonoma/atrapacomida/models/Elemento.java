@@ -18,11 +18,15 @@ public abstract class Elemento {
     }
 
     public boolean esClicDentro(int clicX, int clicY) {
-        // Suponemos que cada elemento tiene un tamaño de 30x30 px
-        return clicX >= x && clicX <= x + 30 &&
-               clicY >= y && clicY <= y + 30;
+        // Cambia el tamaño del área de colisión a 50x50 px
+        return clicX >= x && clicX <= x + 100 &&
+               clicY >= y && clicY <= y + 100;
     }
 
     public int getX() { return x; }
     public int getY() { return y; }
+
+    public void moverAbajo(int velocidad) {
+        this.y += velocidad;
+    }
 }

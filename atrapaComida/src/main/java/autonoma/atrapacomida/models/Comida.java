@@ -21,4 +21,6 @@ public class Comida extends Elemento {
     public ImageIcon getImagen() {
         return imagen;
     }
+
+   
 }

@@ -8,6 +8,7 @@ package autonoma.atrapacomida.models;
  *
  * @author ACER
  */
+import java.util.Iterator;
 import java.util.Random;
 
 public class HiloVeneno extends Thread {
@@ -26,11 +27,22 @@ public class HiloVeneno extends Thread {
     @Override
     public void run() {
         while (activo) {
-            int x = rand.nextInt(400); 
-            int y = rand.nextInt(400); 
-            juego.agregarVeneno(new Veneno(x, y));
+            int x = rand.nextInt(400);
+            juego.agregarVeneno(new Veneno(x, 0));
+
+            synchronized (juego) {
+                Iterator<Veneno> it = juego.getVenenos().iterator();
+                while (it.hasNext()) {
+                    Veneno v = it.next();
+                    v.moverAbajo(2); // Ahora baja de a 2 píxeles
+                    if (v.getY() > 500) {
+                        it.remove();
+                    }
+                }
+            }
+
             try {
-                Thread.sleep(2000); // cada 2 segundos
+                Thread.sleep(30); // Más fluido
             } catch (InterruptedException e) {
                 break;
             }

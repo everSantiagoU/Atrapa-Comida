@@ -4,6 +4,8 @@
  */
 package autonoma.atrapacomida.views;
 
+import autonoma.atrapacomida.models.Juego;
+
 /**
  *
  * @author ACER
@@ -15,6 +17,16 @@ public class Mapa extends javax.swing.JFrame {
      */
     public Mapa() {
         initComponents();
+
+        // Crear instancia del modelo de juego
+        Juego juego = new Juego();
+        // Crear el panel de juego y agregarlo al jPanel1
+        PanelJuego panelJuego = new PanelJuego(juego);
+        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel1.add(panelJuego, java.awt.BorderLayout.CENTER);
+        jPanel1.revalidate();
+        jPanel1.repaint();
+        juego.iniciarJuego();
     }
 
     /**

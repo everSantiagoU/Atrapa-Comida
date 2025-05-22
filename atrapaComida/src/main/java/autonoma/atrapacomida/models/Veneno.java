@@ -13,7 +13,7 @@ public class Veneno extends Elemento {
     private ImageIcon imagen;
     public Veneno(int x, int y) {
         super(x, y);
-        this.imagen = new ImageIcon(getClass().getResource("/autonoma/atrapacomida/images/cigarrillo.png"));
+        this.imagen = new ImageIcon(getClass().getResource("/autonoma/atrapacomida/images/cigarette.png"));
     }
 
     public ImageIcon getImagen() {

@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package autonoma.atrapacomida.models;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 /**
  *
  * @author juand
@@ -73,5 +75,13 @@ public class Juego {
 
     public int getPuntaje() {
         return controlador.getPuntaje();
+    }
+
+    public synchronized List<Veneno> getVenenos() {
+        return venenos;
+    }
+
+    public synchronized List<Comida> getComidas() {
+        return comidas;
     }
 }

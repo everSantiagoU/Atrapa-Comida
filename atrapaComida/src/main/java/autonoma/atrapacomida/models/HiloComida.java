@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package autonoma.atrapacomida.models;
+import java.util.Iterator;
 import java.util.Random;
 
 /**
@@ -25,11 +26,22 @@ public class HiloComida extends Thread {
     @Override
     public void run() {
         while (activo) {
-            int x = rand.nextInt(400); // ancho del panel (ajustable)
-            int y = rand.nextInt(400); // altura del panel (ajustable)
-            juego.agregarComida(new Comida(x, y));
+            int x = rand.nextInt(400);
+            juego.agregarComida(new Comida(x, 0));
+
+            synchronized (juego) {
+                Iterator<Comida> it = juego.getComidas().iterator();
+                while (it.hasNext()) {
+                    Comida c = it.next();
+                    c.moverAbajo(2); // Ahora baja de a 2 píxeles
+                    if (c.getY() > 500) {
+                        it.remove();
+                    }
+                }
+            }
+
             try {
-                Thread.sleep(1500); // cada 1.5 segundos
+                Thread.sleep(30); // Más fluido (más pasos por segundo)
             } catch (InterruptedException e) {
                 break;
             }
