@@ -4,12 +4,21 @@
  */
 package autonoma.atrapacomida.models;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author ACER
  */
 public class Comida extends Elemento {
+    private ImageIcon imagen;
+
     public Comida(int x, int y) {
         super(x, y);
+        this.imagen = new ImageIcon(getClass().getResource("src/main/java/autonoma/atrapacomida/images/Gerald-G-Fast-Food-Lunch-Dinner-.png"));
+    }
+
+    public ImageIcon getImagen() {
+        return imagen;
     }
 }

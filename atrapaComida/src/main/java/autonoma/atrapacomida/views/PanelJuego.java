@@ -8,14 +8,21 @@ package autonoma.atrapacomida.views;
  *
  * @author ACER
  */
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.List;
+
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
 import autonoma.atrapacomida.models.Comida;
 import autonoma.atrapacomida.models.Elemento;
 import autonoma.atrapacomida.models.Juego;
 import autonoma.atrapacomida.models.Veneno;
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.util.List;
 
 public class PanelJuego extends JPanel {
 
@@ -48,11 +55,10 @@ public class PanelJuego extends JPanel {
 
         for (Elemento elem : elementos) {
             if (elem instanceof Comida) {
-                g.setColor(Color.GREEN);
+                g.drawImage(((Comida)elem).getImagen().getImage(), elem.getX(), elem.getY(), 70, 70, this);
             } else if (elem instanceof Veneno) {
-                g.setColor(Color.RED);
+                g.drawImage(((Veneno)elem).getImagen().getImage(), elem.getX(), elem.getY(), 70, 70, this);
             }
-            g.fillOval(elem.getX(), elem.getY(), 30, 30); // círculo
         }
 
         // Mostrar puntaje
