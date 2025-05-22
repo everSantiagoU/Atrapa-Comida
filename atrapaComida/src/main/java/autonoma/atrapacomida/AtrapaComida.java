@@ -1,8 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package autonoma.atrapacomida;
+
+import autonoma.atrapacomida.views.MenuPrincipal;
 
 /**
  *
@@ -11,6 +9,9 @@ package autonoma.atrapacomida;
 public class AtrapaComida {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        // Crear y mostrar el menú principal
+        java.awt.EventQueue.invokeLater(() -> {
+            new MenuPrincipal().setVisible(true);
+        });
     }
 }
