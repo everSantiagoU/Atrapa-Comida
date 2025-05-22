@@ -7,18 +7,28 @@ import java.util.Iterator;
 import java.util.Random;
 
 /**
+ * Hilo encargado de generar y mover las comidas que caen en el juego.
  *
- * @author ACER
+ * @author Santiago
+ * @since 21-05-2025
+ * @version 1.0
  */
 public class HiloComida extends Thread {
     private Juego juego;
     private boolean activo = true;
     private Random rand = new Random();
 
+    /**
+     * Constructor del hilo de comida.
+     * @param juego referencia al juego principal
+     */
     public HiloComida(Juego juego) {
         this.juego = juego;
     }
 
+    /**
+     * Detiene la ejecución del hilo.
+     */
     public void detener() {
         activo = false;
     }
@@ -33,7 +43,7 @@ public class HiloComida extends Thread {
                 Iterator<Comida> it = juego.getComidas().iterator();
                 while (it.hasNext()) {
                     Comida c = it.next();
-                    c.moverAbajo(2); // Ahora baja de a 2 píxeles
+                    c.moverAbajo(2);
                     if (c.getY() > 500) {
                         it.remove();
                     }
@@ -41,7 +51,7 @@ public class HiloComida extends Thread {
             }
 
             try {
-                Thread.sleep(30); // Más fluido (más pasos por segundo)
+                Thread.sleep(30);
             } catch (InterruptedException e) {
                 break;
             }

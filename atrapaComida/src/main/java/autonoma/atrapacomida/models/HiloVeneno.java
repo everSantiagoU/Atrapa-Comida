@@ -5,8 +5,11 @@
 package autonoma.atrapacomida.models;
 
 /**
+ * Hilo encargado de generar y mover los venenos que caen en el juego.
  *
- * @author ACER
+ * @author Santiago
+ * @since 21-05-2025
+ * @version 1.0
  */
 import java.util.Iterator;
 import java.util.Random;
@@ -16,10 +19,17 @@ public class HiloVeneno extends Thread {
     private boolean activo = true;
     private Random rand = new Random();
 
+    /**
+     * Constructor del hilo de veneno.
+     * @param juego referencia al juego principal
+     */
     public HiloVeneno(Juego juego) {
         this.juego = juego;
     }
 
+    /**
+     * Detiene la ejecución del hilo.
+     */
     public void detener() {
         activo = false;
     }
@@ -34,7 +44,7 @@ public class HiloVeneno extends Thread {
                 Iterator<Veneno> it = juego.getVenenos().iterator();
                 while (it.hasNext()) {
                     Veneno v = it.next();
-                    v.moverAbajo(2); // Ahora baja de a 2 píxeles
+                    v.moverAbajo(2);
                     if (v.getY() > 500) {
                         it.remove();
                     }
@@ -42,7 +52,7 @@ public class HiloVeneno extends Thread {
             }
 
             try {
-                Thread.sleep(30); // Más fluido
+                Thread.sleep(30);
             } catch (InterruptedException e) {
                 break;
             }
