@@ -15,7 +15,7 @@ public class Comida extends Elemento {
 
     public Comida(int x, int y) {
         super(x, y);
-        this.imagen = new ImageIcon(getClass().getResource("src/main/java/autonoma/atrapacomida/images/Gerald-G-Fast-Food-Lunch-Dinner-.png"));
+        this.imagen = new ImageIcon(getClass().getResource("/autonoma/atrapacomida/images/Gerald-G-Fast-Food-Lunch-Dinner-.png"));
     }
 
     public ImageIcon getImagen() {
